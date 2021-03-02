@@ -6,7 +6,7 @@ import TabNavigation from "./TabNavigation";
 const MainNavigation = createStackNavigator();
 
 export default () => (
-  // 스택 네비게이션에 탭 네비게이션을 자식으로
+  // 스택 네비게이션 + 탭 네비게이션 결합
   <MainNavigation.Navigator>
     <MainNavigation.Screen
       name="TabNavigation"

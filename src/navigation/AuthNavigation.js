@@ -15,16 +15,16 @@ export default () => (
       component={Login}
     ></AuthNavigation.Screen>
     <AuthNavigation.Screen
+      name="Confirm"
+      component={Confirm}
+    ></AuthNavigation.Screen>
+    <AuthNavigation.Screen
       name="AuthHome"
       component={AuthHome}
     ></AuthNavigation.Screen>
     <AuthNavigation.Screen
       name="Signup"
       component={Signup}
-    ></AuthNavigation.Screen>
-    <AuthNavigation.Screen
-      name="Confirm"
-      component={Confirm}
     ></AuthNavigation.Screen>
   </AuthNavigation.Navigator>
 );
