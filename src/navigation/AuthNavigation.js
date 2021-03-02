@@ -9,15 +9,7 @@ import AuthHome from "../screens/Auth/AuthHome";
 const AuthNavigation = createStackNavigator();
 
 export default () => (
-  <AuthNavigation.Navigator mode="card">
-    <AuthNavigation.Screen
-      name="Signup"
-      component={Signup}
-    ></AuthNavigation.Screen>
-    <AuthNavigation.Screen
-      name="Confirm"
-      component={Confirm}
-    ></AuthNavigation.Screen>
+  <AuthNavigation.Navigator>
     <AuthNavigation.Screen
       name="Login"
       component={Login}
@@ -25,6 +17,14 @@ export default () => (
     <AuthNavigation.Screen
       name="AuthHome"
       component={AuthHome}
+    ></AuthNavigation.Screen>
+    <AuthNavigation.Screen
+      name="Signup"
+      component={Signup}
+    ></AuthNavigation.Screen>
+    <AuthNavigation.Screen
+      name="Confirm"
+      component={Confirm}
     ></AuthNavigation.Screen>
   </AuthNavigation.Navigator>
 );

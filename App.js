@@ -10,6 +10,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NavigationContainer } from "@react-navigation/native";
 import { AuthProvider } from "./AuthContext";
 import NavigationController from "./src/components/NavigationController";
+import styles from "./styles";
 
 export default function App() {
   const [client, setClient] = useState(null); // backend랑 연결할 때 사용
@@ -21,7 +22,7 @@ export default function App() {
       await Font.loadAsync({
         ...Ionicons.font,
       });
-      await Asset.loadAsync([]); // image preload
+      await Asset.loadAsync([require("./assets/logo.png")]); // image preload
       /*
         // TODO: cache memory code 
       */
@@ -48,18 +49,8 @@ export default function App() {
           <NavigationController />
         </NavigationContainer>
       </AuthProvider>
-      <StatusBar style="auto" />
     </ThemeProvider>
   ) : (
     <AppLoading />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
