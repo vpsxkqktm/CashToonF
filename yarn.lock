@@ -5447,6 +5447,13 @@ react-native-screens@~2.15.2:
   resolved "https://registry.npmjs.org/react-native-screens/-/react-native-screens-2.15.2.tgz"
   integrity sha512-CagNf2APXkVoRlF3Mugr264FbKbrBg9eXUkqhIPVeZB8EsdS8XPrnt99yj/pzmT+yJMBY0dGrjXT8+68WYh6YQ==
 
+react-native-web-swiper@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-web-swiper/-/react-native-web-swiper-2.2.1.tgz#48d53e0ecf86d3fcd49f63ef7894db4beaa3b6f2"
+  integrity sha512-7q8BCdoCt91dw0fXhdTJ5S61NxOARAQX/F3x3sr5DJg9eGG4DoOSqLgJKFJl/7Z5GJasHbvKchC+SxgvtZVZvA==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-web@^0.15.0:
   version "0.15.0"
   resolved "https://registry.npmjs.org/react-native-web/-/react-native-web-0.15.0.tgz"

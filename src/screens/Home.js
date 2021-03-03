@@ -1,111 +1,114 @@
 import React from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  PixelRatio,
-  Dimensions,
-  Image,
-} from "react-native";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { StyleSheet, PixelRatio, Dimensions, Image } from "react-native";
+import styled from "styled-components/native";
+import Swiper from "react-native-web-swiper";
 
 import constants from "../../constants";
 
-const { width, height } = Dimensions.get("window");
+const Container = styled.SafeAreaView`
+  flex: 1;
+`;
 
-const Home = ({ navigation }) => {
+const View = styled.ScrollView``;
+
+const UserInfo = styled.View`
+  width: 100%;
+  height: ${constants.height / 8};
+  background-color: yellow;
+  align-items: center;
+  justify-content: center;
+`;
+
+const PointBalance = styled.Text``;
+
+const UsePointButton = styled.TouchableOpacity`
+  width: 100;
+  height: 30;
+  background-color: red;
+`;
+
+const UsePointText = styled.Text`
+  text-align: center;
+`;
+
+const SliderContainer = styled.View`
+  width: 100%;
+  height: ${constants.height / 4};
+`;
+
+const SwiperView = styled.View`
+  flex: 1;
+  justify-content: center;
+  background-color: green;
+`;
+
+const SwiperText = styled.Text`
+  color: white;
+  text-align: center;
+`;
+
+const MenuView = styled.View`
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+`;
+
+const MenuButton = styled.TouchableOpacity`
+  width: 50%;
+  height: 120px;
+  background-color: gray;
+`;
+
+const MenuText = styled.Text`
+  text-align: center;
+`;
+
+const Home = ({ navigation, point }) => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={stylesContainer.UserInfo}>
-        <View>
-          <Text>유저님 gd</Text>
-        </View>
-        <View>
-          <Text>사용가능한 포인트:</Text>
-        </View>
-        <View>
-          <Text>50000000원</Text>
-        </View>
-        <TouchableOpacity
-          style={{
-            width: 100,
-            height: 30,
-            backgroundColor: "red",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: 13,
-          }}
-        >
-          <Text>포인트 사용</Text>
-        </TouchableOpacity>
+    <Container>
+      <View>
+        <UserInfo>
+          <PointBalance>{`사용 가능한 금액 :${point}`}</PointBalance>
+          <UsePointButton>
+            <UsePointText>포인트사용</UsePointText>
+          </UsePointButton>
+        </UserInfo>
+        <SliderContainer>
+          <Swiper
+            loop
+            timeout={20} // 루프 속도 (s)
+            controlsProps={{ prevPos: false, nextPos: false }}
+          >
+            <SwiperView>
+              <SwiperText>Scrren1</SwiperText>
+            </SwiperView>
+            <SwiperView>
+              <SwiperText>Scrren2</SwiperText>
+            </SwiperView>
+          </Swiper>
+        </SliderContainer>
+        <MenuView>
+          <MenuButton>
+            <MenuText>메뉴 1</MenuText>
+          </MenuButton>
+          <MenuButton>
+            <MenuText>메뉴 2</MenuText>
+          </MenuButton>
+          <MenuButton>
+            <MenuText>메뉴 3</MenuText>
+          </MenuButton>
+          <MenuButton>
+            <MenuText>메뉴 4</MenuText>
+          </MenuButton>
+          <MenuButton>
+            <MenuText>메뉴 5</MenuText>
+          </MenuButton>
+          <MenuButton>
+            <MenuText>메뉴 6</MenuText>
+          </MenuButton>
+        </MenuView>
       </View>
-      <ScrollView
-        style={{ height: 300 }}
-        horizontal={true}
-        scrollEventThrottle={30}
-        pagingEnabled={true}
-        showsHorizontalScrollIndicator={false}
-      >
-        <View style={{ width, height }}>
-          <Image
-            style={stylesContainer.imageStyle}
-            source={require("../../assets/cat1.jpg")}
-          />
-          <Text>Screen1</Text>
-        </View>
-        <View style={{ width, height }}>
-          <Image
-            style={stylesContainer.imageStyle}
-            source={require("../../assets/cat2.jpg")}
-          />
-          <Text>Screen2</Text>
-        </View>
-        <View style={{ width, height }}>
-          <Image
-            style={stylesContainer.imageStyle}
-            source={require("../../assets/cat3.jpg")}
-          />
-          <Text>Screen3</Text>
-        </View>
-        <View style={{ width, height }}>
-          <Image
-            style={stylesContainer.imageStyle}
-            source={require("../../assets/cat4.jpg")}
-          />
-          <Text>Screen4</Text>
-        </View>
-        <View style={{ width, height }}>
-          <Image
-            style={stylesContainer.imageStyle}
-            source={require("../../assets/cat5.jpg")}
-          />
-          <Text>Screen5</Text>
-        </View>
-      </ScrollView>
-
-      <TouchableOpacity style={stylesContainer.BannerButton}>
-        <Text>배너 광고</Text>
-      </TouchableOpacity>
-
-      <View style={{ flexDirection: "row" }}>
-        <TouchableOpacity style={stylesContainer.Category1}>
-          <Text>리워드 페이지</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={stylesContainer.Category2}>
-          <Text>웹툰</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={{ flexDirection: "row" }}>
-        <TouchableOpacity style={stylesContainer.Category2}>
-          <Text>심리테스트</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={stylesContainer.Category1}>
-          <Text>복권</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+    </Container>
   );
 };
 
