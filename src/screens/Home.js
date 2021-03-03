@@ -5,6 +5,8 @@ import Swiper from "react-native-web-swiper";
 
 import constants from "../../constants";
 
+import Reword from "../screens/Reword";
+
 const Container = styled.SafeAreaView`
   flex: 1;
 `;
@@ -88,23 +90,23 @@ const Home = ({ navigation, point }) => {
           </Swiper>
         </SliderContainer>
         <MenuView>
-          <MenuButton>
-            <MenuText>메뉴 1</MenuText>
+          <MenuButton onPress={() => navigation.navigate("Reward")}>
+            <MenuText>리워드페이지</MenuText>
           </MenuButton>
-          <MenuButton>
-            <MenuText>메뉴 2</MenuText>
+          <MenuButton onPress={() => navigation.navigate("Webtoon")}>
+            <MenuText>웹툰</MenuText>
           </MenuButton>
-          <MenuButton>
-            <MenuText>메뉴 3</MenuText>
+          <MenuButton onPress={() => navigation.navigate("Minigame")}>
+            <MenuText>심리테스트</MenuText>
           </MenuButton>
-          <MenuButton>
-            <MenuText>메뉴 4</MenuText>
+          <MenuButton onPress={() => navigation.navigate("Lotto")}>
+            <MenuText>복권</MenuText>
           </MenuButton>
-          <MenuButton>
-            <MenuText>메뉴 5</MenuText>
+          <MenuButton onPress={() => navigation.navigate("Fortune")}>
+            <MenuText>포츈쿠기</MenuText>
           </MenuButton>
-          <MenuButton>
-            <MenuText>메뉴 6</MenuText>
+          <MenuButton onPress={() => navigation.navigate("Quiz")}>
+            <MenuText>가로세로</MenuText>
           </MenuButton>
         </MenuView>
       </View>
