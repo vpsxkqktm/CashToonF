@@ -1,5 +1,9 @@
+//refresh scrollview test
+
 import React from "react";
 import styled from "styled-components";
+
+import ScrollViewContainer from "../components/ScrollViewContainer";
 
 const View = styled.View`
   flex: 1;
@@ -9,8 +13,14 @@ const View = styled.View`
 
 const Text = styled.Text``;
 
-export default () => (
-  <View>
-    <Text>Profile</Text>
-  </View>
-);
+const Profile = ({ loading, refreshFunc }) => {
+  return (
+    <ScrollViewContainer loading={loading} refreshFunc={refreshFunc}>
+      <View>
+        <Text>Profile</Text>
+      </View>
+    </ScrollViewContainer>
+  );
+};
+
+export default Profile;
