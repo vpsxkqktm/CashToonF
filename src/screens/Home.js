@@ -5,7 +5,11 @@ import Swiper from "react-native-web-swiper";
 
 import constants from "../../constants";
 
+<<<<<<< HEAD
 //import Reword from "../screens/Reword";
+=======
+import Reword from "../screens/Reword";
+>>>>>>> 9562f2929572223527f0d1caa346968f1d89c243
 
 const Container = styled.SafeAreaView`
   flex: 1;
