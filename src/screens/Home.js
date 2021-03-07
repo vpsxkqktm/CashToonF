@@ -5,12 +5,6 @@ import Swiper from "react-native-web-swiper";
 
 import constants from "../../constants";
 
-<<<<<<< HEAD
-//import Reword from "../screens/Reword";
-=======
-import Reword from "../screens/Reword";
->>>>>>> 9562f2929572223527f0d1caa346968f1d89c243
-
 const Container = styled.SafeAreaView`
   flex: 1;
 `;
@@ -19,7 +13,7 @@ const View = styled.ScrollView``;
 
 const UserInfo = styled.View`
   width: 100%;
-  height: ${constants.height / 8};
+  height: ${constants.height / 4};
   background-color: yellow;
   align-items: center;
   justify-content: center;
@@ -72,24 +66,31 @@ const MenuText = styled.Text`
 const Home = ({ navigation, point }) => {
   return (
     <Container>
+      {/* 유저 인포는 상단에 고정되있는게 좋을거 같다고 생각함 */}
+      <UserInfo>
+        <PointBalance>{`사용 가능한 금액 :${point}`}</PointBalance>
+        <UsePointButton>
+          <UsePointText>포인트사용</UsePointText>
+        </UsePointButton>
+      </UserInfo>
       <View>
-        <UserInfo>
-          <PointBalance>{`사용 가능한 금액 :${point}`}</PointBalance>
-          <UsePointButton>
-            <UsePointText>포인트사용</UsePointText>
-          </UsePointButton>
-        </UserInfo>
         <SliderContainer>
           <Swiper
             loop
-            timeout={20} // 루프 속도 (s)
+            timeout={5} // 루프 속도 (s)
             controlsProps={{ prevPos: false, nextPos: false }}
           >
             <SwiperView>
-              <SwiperText>Scrren1</SwiperText>
+              <SwiperText>screen1</SwiperText>
             </SwiperView>
             <SwiperView>
               <SwiperText>Scrren2</SwiperText>
+            </SwiperView>
+            <SwiperView>
+              <SwiperText>Scrren3</SwiperText>
+            </SwiperView>
+            <SwiperView>
+              <SwiperText>Scrren4</SwiperText>
             </SwiperView>
           </Swiper>
         </SliderContainer>
@@ -110,6 +111,42 @@ const Home = ({ navigation, point }) => {
             <MenuText>포츈쿠기</MenuText>
           </MenuButton>
           <MenuButton onPress={() => navigation.navigate("Quiz")}>
+            <MenuText>가로세로</MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => navigation.navigate("Reward")}>
+            <MenuText>리워드페이지</MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => navigation.navigate("Webtoon")}>
+            <MenuText>웹툰</MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => navigation.navigate("Minigame")}>
+            <MenuText>심리테스트</MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => navigation.navigate("Lotto")}>
+            <MenuText>복권</MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => navigation.navigate("Fortune")}>
+            <MenuText>포츈쿠기</MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => navigation.navigate("Quiz")}>
+            <MenuText>가로세로</MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => navigation.navigate("Reward")}>
+            <MenuText>리워드페이지</MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => navigation.navigate("Webtoon")}>
+            <MenuText>웹툰</MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => navigation.navigate("Minigame")}>
+            <MenuText>심리테스트</MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => navigation.navigate("Lotto")}>
+            <MenuText>복권</MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => navigation.navigate("Fortune")}>
+            <MenuText>포츈쿠기</MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => navigation.navigate("Search")}>
             <MenuText>가로세로</MenuText>
           </MenuButton>
         </MenuView>
