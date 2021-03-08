@@ -1,4 +1,5 @@
 // 당겨서 새로고침 구현
+// 
 
 import React, { useState } from "react";
 import { ScrollView, ActivityIndicator, RefreshControl } from "react-native";

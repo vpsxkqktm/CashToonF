@@ -5,8 +5,6 @@ import Swiper from "react-native-web-swiper";
 
 import constants from "../../constants";
 
-import Reword from "../screens/Reword";
-
 const Container = styled.SafeAreaView`
   flex: 1;
 `;
