@@ -1,7 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NavigationActions } from "react-navigation";
 import TabNavigation from "./TabNavigation";
 
 import RewardScreen from "../screens/Reword";

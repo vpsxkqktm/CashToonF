@@ -12,7 +12,19 @@ import {
 import { SearchBar } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import constants from "../../constants";
+import styled from "styled-components/native";
 
+const SearchContainer = styled.View``;
+const SearchInputView = styled.View`
+  margin-top: 30;
+  flex-direction: row;
+`;
+const SearchButton = styled.TouchableOpacity`
+  width: 15%;
+  justify-content: center;
+  margin-left: 20;
+`;
+const SeacrhResultView = styled.View``;
 const SearchScreen = ({ navigation }) => {
   const [refreshing, setRefreshing] = useState(false);
   const [SText, setSText] = useState("");
@@ -60,8 +72,8 @@ const SearchScreen = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <View style={{ marginTop: 30, flexDirection: "row" }}>
+    <SearchContainer>
+      <SearchInputView>
         <SearchBar
           containerStyle={{ width: "85%" }}
           lightTheme={true}
@@ -69,22 +81,18 @@ const SearchScreen = ({ navigation }) => {
           value={SText}
           onChangeText={updateSText}
         />
-        <TouchableOpacity
-          style={{ width: "15%" }}
-          style={{ justifyContent: "center", marginLeft: 20 }}
-          onPress={SearchResult}
-        >
+        <SearchButton onPress={SearchResult}>
           <Icon name="search" size={20}></Icon>
-        </TouchableOpacity>
-      </View>
-      <View>
+        </SearchButton>
+      </SearchInputView>
+      <SeacrhResultView>
         <FlatList
           data={Searched}
           renderItem={({ item }) => <Text>{item.name}</Text>}
           keyExtractor={(item) => item.id.toString()}
         />
-      </View>
-    </View>
+      </SeacrhResultView>
+    </SearchContainer>
   );
 };
 

@@ -12,13 +12,12 @@ import {
 import styled from "styled-components/native";
 import Swiper from "react-native-web-swiper";
 import constants from "../../constants";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Modal from "react-native-modal";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import CheckBox from "@react-native-community/checkbox";
-import { Value } from "react-native-reanimated";
+import WebtoonNavigator from "../navigation/WebtoonCategoryNavigation";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
-const Tab = createMaterialTopTabNavigator();
 const WebtoonContainer = styled.SafeAreaView`
   flex: 1;
 `;
@@ -75,82 +74,15 @@ const ToggleView = styled.View`
 const CloseModal = styled.TouchableOpacity`
   justify-content: center;
 `;
-const ActionToon = () => {
-  return (
-    <WebtoonView>
-      <View style={{ flexDirection: "row", flexShrink: 1, flexWrap: "wrap" }}>
-        <WebtoonMainPic source={require("../../assets/iu1.jpg")} />
-        <WebtoonMainPic source={require("../../assets/iu1.jpg")} />
-        <WebtoonMainPic source={require("../../assets/iu1.jpg")} />
-        <WebtoonMainPic source={require("../../assets/iu2.jpg")} />
-        <WebtoonMainPic source={require("../../assets/iu2.jpg")} />
-        <WebtoonMainPic source={require("../../assets/iu2.jpg")} />
-        <WebtoonMainPic source={require("../../assets/iu3.jpg")} />
-        <WebtoonMainPic source={require("../../assets/iu3.jpg")} />
-        <WebtoonMainPic source={require("../../assets/iu3.jpg")} />
-        <WebtoonMainPic source={require("../../assets/iu4.jpg")} />
-        <WebtoonMainPic source={require("../../assets/iu4.jpg")} />
-        <WebtoonMainPic source={require("../../assets/iu4.jpg")} />
-      </View>
-    </WebtoonView>
-  );
-};
-const ComedyToon = () => {
-  return (
-    <WebtoonView>
-      <Text>asd</Text>
-    </WebtoonView>
-  );
-};
-const DeductionToon = () => {
-  return (
-    <WebtoonView>
-      <Text>asd</Text>
-    </WebtoonView>
-  );
-};
-const HorrorToon = () => {
-  return (
-    <WebtoonView>
-      <Text>asd</Text>
-    </WebtoonView>
-  );
-};
-const NormalToon = () => {
-  return (
-    <WebtoonView>
-      <Text>asd</Text>
-    </WebtoonView>
-  );
-};
-const RomanceToon = () => {
-  return (
-    <WebtoonView>
-      <Text>asd</Text>
-    </WebtoonView>
-  );
-};
-const BLTOON = () => {
-  return (
-    <WebtoonView>
-      <Text>asd</Text>
-    </WebtoonView>
-  );
-};
-const GLTOON = () => {
-  return (
-    <WebtoonView>
-      <Text>asd</Text>
-    </WebtoonView>
-  );
-};
-const DramaToon = () => {
-  return (
-    <WebtoonView>
-      <Text>asd</Text>
-    </WebtoonView>
-  );
-};
+
+const CloseText = styled.Text`
+  margin-right: 20;
+  font-size: 15;
+`;
+
+const ModalView = styled.View`
+  background-color: black;
+`;
 
 const WebToonScreen = ({ navigation }) => {
   useEffect(() => {
@@ -179,27 +111,10 @@ const WebToonScreen = ({ navigation }) => {
 
   return (
     <WebtoonContainer>
-      <Tab.Navigator
-        tabBarOptions={{
-          scrollEnabled: true,
-          labelStyle: { fontSize: 12 },
-          tabStyle: { width: 100 },
-          style: { backgroundColor: "powderblue" },
-        }}
-      >
-        <Tab.Screen name="액션" component={ActionToon} />
-        <Tab.Screen name="로맨스" component={RomanceToon} />
-        <Tab.Screen name="일상" component={NormalToon} />
-        <Tab.Screen name="코미디" component={ComedyToon} />
-        <Tab.Screen name="공포" component={HorrorToon} />
-        <Tab.Screen name="드라마" component={DramaToon} />
-        <Tab.Screen name="BL" component={BLTOON} />
-        <Tab.Screen name="GL" component={GLTOON} />
-        <Tab.Screen name="추리" component={DeductionToon} />
-      </Tab.Navigator>
+      <WebtoonNavigator />
 
       <Modal isVisible={isModalVisible} coverScreen={false}>
-        <View style={{ backgroundColor: "black" }}>
+        <ModalView>
           <WebtoonSliderContainer>
             <Swiper
               loop
@@ -233,11 +148,11 @@ const WebToonScreen = ({ navigation }) => {
             </CheckBoxView>
             <ToggleView>
               <CloseModal onPress={toggleModal}>
-                <Text style={{ marginRight: 20, fontSize: 15 }}>닫기</Text>
+                <CloseText>닫기</CloseText>
               </CloseModal>
             </ToggleView>
           </CheckContainer>
-        </View>
+        </ModalView>
       </Modal>
     </WebtoonContainer>
   );
