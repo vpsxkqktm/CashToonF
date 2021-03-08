@@ -11,6 +11,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { AuthProvider } from "./AuthContext";
 import NavigationController from "./src/components/NavigationController";
 import styles from "./styles";
+import { navigationRef } from "./src/navigation/MainNavigation";
 
 export default function App() {
   const [client, setClient] = useState(null); // backend랑 연결할 때 사용

@@ -9,11 +9,13 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.14.1",
+    "@react-native-community/checkbox": "^0.5.7",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/bottom-tabs": "^5.11.8",
+    "@react-navigation/material-top-tabs": "^5.3.14",
     "@react-navigation/native": "^5.9.3",
     "@react-navigation/stack": "^5.14.3",
-    "expo": "~40.0.0",
+    "expo": "^40.0.1",
     "expo-app-loading": "^1.0.1",
     "expo-asset": "~8.2.1",
     "expo-font": "~8.4.0",
@@ -22,16 +24,23 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "^0.63.4",
+    "react-native-elements": "^3.2.0",
     "react-native-gesture-handler": "~1.8.0",
+    "react-native-modal": "^11.7.0",
+    "react-native-popover-view": "^3.1.1",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
     "react-native-screens": "~2.15.2",
+    "react-native-tab-view": "^2.15.2",
     "react-native-web": "^0.15.0",
     "react-native-web-swiper": "^2.2.1",
+    "react-navigation": "^4.4.4",
+    "react-navigation-stack": "^2.10.4",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0"
+    "@babel/core": "~7.9.0",
+    "metro-react-native-babel-preset": "^0.65.2"
   },
   "private": true
 }
