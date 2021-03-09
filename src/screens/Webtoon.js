@@ -1,22 +1,18 @@
-import { Assets } from "@react-navigation/stack";
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  SafeAreaView,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { Text } from "react-native";
 import styled from "styled-components/native";
 import Swiper from "react-native-web-swiper";
-import constants from "../../constants";
 import Modal from "react-native-modal";
-import Icon from "react-native-vector-icons/Ionicons";
+import { Ionicons } from "@expo/vector-icons";
 import { CheckBox } from "react-native-elements";
+
+import constants from "../../constants";
 import WebtoonNavigator from "../navigation/WebtoonCategoryNavigation";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+
+// import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+// 일단은 top 쓸지 bottom 쓸지 정하고 봐야할듯
+// 기본 네비게이터가 디자인이 안 예뼈서 디자인 넣을거면 react-navigation 만든 사람도 다른 라이브러리 쓰라고 해둠 ㅡㅡ
+// 아마 보셨을텐데 createMaterialBottomTabNavigator / createMaterialTopTabNavigator react-navigation 문서 파트 참고
 
 const WebtoonContainer = styled.SafeAreaView`
   flex: 1;
@@ -57,6 +53,7 @@ const HeaderView = styled.View`
 const CheckContainer = styled.View`
   flex-direction: row;
 `;
+
 const CheckBoxView = styled.View`
   width: 50%;
   flex-direction: row;
@@ -64,6 +61,7 @@ const CheckBoxView = styled.View`
   justify-content: center;
   align-items: center;
 `;
+
 const ToggleView = styled.View`
   flex-direction: row-reverse;
   width: 50%;
@@ -83,11 +81,17 @@ const ModalView = styled.View`
   background-color: black;
 `;
 
+const SearchButton = styled.TouchableOpacity`
+  margin-right: 20;
+  align-items: center;
+  justify-content: center;
+`;
+
 const WebToonScreen = ({ navigation }) => {
   useEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity
+        <SearchButton
           style={{
             marginRight: 20,
             alignItems: "center",
@@ -95,8 +99,8 @@ const WebToonScreen = ({ navigation }) => {
           }}
           onPress={() => navigation.navigate("Search")}
         >
-          <Icon name="search-outline" size={18}></Icon>
-        </TouchableOpacity>
+          <Ionicons name="search-outline" size={18}></Ionicons>
+        </SearchButton>
       ),
     });
   });
