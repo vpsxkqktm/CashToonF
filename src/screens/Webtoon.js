@@ -13,8 +13,8 @@ import styled from "styled-components/native";
 import Swiper from "react-native-web-swiper";
 import constants from "../../constants";
 import Modal from "react-native-modal";
-import Icon from "react-native-vector-icons/FontAwesome5";
-import CheckBox from "@react-native-community/checkbox";
+import Icon from "react-native-vector-icons/Ionicons";
+import { CheckBox } from "react-native-elements";
 import WebtoonNavigator from "../navigation/WebtoonCategoryNavigation";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
@@ -66,9 +66,8 @@ const CheckBoxView = styled.View`
 `;
 const ToggleView = styled.View`
   flex-direction: row-reverse;
-  width: 50%
+  width: 50%;
   background-color: grey;
-  
 `;
 
 const CloseModal = styled.TouchableOpacity`
@@ -96,7 +95,7 @@ const WebToonScreen = ({ navigation }) => {
           }}
           onPress={() => navigation.navigate("Search")}
         >
-          <Icon name="search" size={18}></Icon>
+          <Icon name="search-outline" size={18}></Icon>
         </TouchableOpacity>
       ),
     });
@@ -142,8 +141,8 @@ const WebToonScreen = ({ navigation }) => {
             <CheckBoxView>
               <Text>서버 되면 마무리</Text>
               <CheckBox
-                value={toggleCheckBox}
-                onValueChange={(newValue) => setToggleCheckBox(newValue)}
+                checked={toggleCheckBox}
+                onPress={() => setToggleCheckBox(!toggleCheckBox)}
               />
             </CheckBoxView>
             <ToggleView>
