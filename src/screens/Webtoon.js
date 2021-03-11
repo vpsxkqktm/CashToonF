@@ -105,7 +105,7 @@ const WebToonScreen = ({ navigation }) => {
     });
   });
 
-  const [isModalVisible, setModalVisible] = useState(true);
+  const [isModalVisible, setModalVisible] = useState(false); // 잠깐 꺼둠
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
 
   const toggleModal = () => {

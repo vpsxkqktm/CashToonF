@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 import Swiper from "react-native-web-swiper";
 
 import constants from "../../constants";
+import { numberComma } from "../../utils";
 
 const Container = styled.SafeAreaView`
   flex: 1;
@@ -64,11 +65,14 @@ const MenuText = styled.Text`
 `;
 
 const Home = ({ navigation, point }) => {
+  point = 94817905324;
   return (
     <Container>
       {/* 유저 인포는 상단에 고정되있는게 좋을거 같다고 생각함 */}
       <UserInfo>
-        <PointBalance>{`사용 가능한 금액 :${point}`}</PointBalance>
+        <PointBalance>{`사용 가능한 금액 :${numberComma(
+          point
+        )} 원`}</PointBalance>
         <UsePointButton>
           <UsePointText>포인트사용</UsePointText>
         </UsePointButton>
