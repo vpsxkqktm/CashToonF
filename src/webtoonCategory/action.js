@@ -20,7 +20,7 @@ const WetoonButton = styled.TouchableOpacity``;
 
 const TestText = styled.Text`
   text-align: center;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: normal;
 `;
 
@@ -36,7 +36,9 @@ const ActionToon = () => {
         </WetoonButton>
         <WetoonButton>
           <Image source={require("../../assets/iu1.jpg")} />
-          <TestText>{trimText("아주긴제목이나왔을때해결법1번", 10)}</TestText>
+          <TestText>
+            {trimText("아주아주긴제목이나왔을때해결법1번", 10)}
+          </TestText>
         </WetoonButton>
         <Image source={require("../../assets/iu2.jpg")} />
         <Image source={require("../../assets/iu2.jpg")} />
