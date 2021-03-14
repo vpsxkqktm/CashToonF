@@ -8,6 +8,7 @@ import {
   FlatList,
   RefreshControl,
   scrollView,
+  BackHandler,
 } from "react-native";
 import { SearchBar } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome5";
@@ -39,6 +40,13 @@ const SearchScreen = ({ navigation }) => {
       .catch((error) => {
         console.error(error);
       });
+    const custumBackButton = () => {
+      navigation.navigate("Webtoon");
+    };
+    BackHandler.addEventListener("ReturnWebtoon", custumBackButton);
+
+    return () =>
+      BackHandler.removeEventListener("ReturnWebtoon", custumBackButton);
   });
 
   const wait = (timeout) => {
@@ -56,8 +64,7 @@ const SearchScreen = ({ navigation }) => {
 
   const SearchResult = () => {
     // ****sanitising****** 무조건, 스타일변경
-    let count = 0;
-    if (SText === "" && count === 0) {
+    if (SText === "") {
       setSearched(result);
     } else {
       const newData = result.filter(function (item) {
@@ -65,7 +72,6 @@ const SearchScreen = ({ navigation }) => {
         const textData = SText.toUpperCase();
         return itemData.indexOf(textData) > -1;
       });
-      count++;
       setSearched(newData);
       setSText("");
     }

@@ -1,14 +1,6 @@
 import { Assets } from "@react-navigation/stack";
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  SafeAreaView,
-  Button,
-  TouchableOpacity,
-} from "react-native";
+import { Text, TouchableOpacity, BackHandler } from "react-native";
 import styled from "styled-components/native";
 import Swiper from "react-native-web-swiper";
 import constants from "../../constants";
@@ -66,9 +58,8 @@ const CheckBoxView = styled.View`
 `;
 const ToggleView = styled.View`
   flex-direction: row-reverse;
-  width: 50%
+  width: 50%;
   background-color: grey;
-  
 `;
 
 const CloseModal = styled.TouchableOpacity`
@@ -100,6 +91,13 @@ const WebToonScreen = ({ navigation }) => {
         </TouchableOpacity>
       ),
     });
+    const custumBackButton = () => {
+      navigation.navigate("Home");
+    };
+    BackHandler.addEventListener("ReturnHome", custumBackButton);
+
+    return () =>
+      BackHandler.removeEventListener("ReturnHome", custumBackButton);
   });
 
   const [isModalVisible, setModalVisible] = useState(true);

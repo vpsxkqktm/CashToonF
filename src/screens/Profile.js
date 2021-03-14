@@ -1,6 +1,7 @@
 //refresh scrollview test
 
-import React from "react";
+import React, { useEffect } from "react";
+import { Alert, BackHandler } from "react-native";
 import styled from "styled-components";
 
 import ScrollViewContainer from "../components/ScrollViewContainer";

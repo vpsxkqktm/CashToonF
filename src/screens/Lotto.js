@@ -1,12 +1,11 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, BackHandler, Alert } from "react-native";
 
 const LottoScreen = () => {
   return (
     <View>
-      <Text>하위</Text>
+      <Text>확인</Text>
     </View>
   );
 };
-
 export default LottoScreen;

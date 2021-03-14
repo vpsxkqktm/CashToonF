@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Alert, BackHandler } from "react-native";
 import styled from "styled-components";
 
 const View = styled.View`
@@ -9,8 +10,12 @@ const View = styled.View`
 
 const Text = styled.Text``;
 
-export default () => (
-  <View>
-    <Text>Shopping</Text>
-  </View>
-);
+const Shopping = () => {
+  return (
+    <View>
+      <Text>Shopping</Text>
+    </View>
+  );
+};
+
+export default Shopping;

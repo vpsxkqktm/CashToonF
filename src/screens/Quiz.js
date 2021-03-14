@@ -1,7 +1,16 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, BackHandler } from "react-native";
 
-const QuizScreen = () => {
+const QuizScreen = ({ navigation }) => {
+  useEffect(() => {
+    const custumBackButton = () => {
+      navigation.navigate("Home");
+    };
+    BackHandler.addEventListener("ReturnHome", custumBackButton);
+
+    return () =>
+      BackHandler.removeEventListener("ReturnHome", custumBackButton);
+  });
   return (
     <View>
       <Text>가로세로</Text>
