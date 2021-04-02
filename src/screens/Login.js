@@ -18,8 +18,13 @@ const LOG_IN_MUTATION = gql`
   }
 `;
 
-export default function Login({ navigation }) {
-  const { register, handleSubmit, setValue, watch, getValues } = useForm();
+export default function Login({ route: { params } }) {
+  const { register, handleSubmit, setValue, watch, getValues } = useForm({
+    defaultValues: {
+      username: params?.username,
+      password: params?.password,
+    },
+  });
   const passwordRef = useRef();
   const onCompleted = (data) => {
     const {
@@ -57,6 +62,7 @@ export default function Login({ navigation }) {
   return (
     <AuthLayout>
       <TextInput
+        value={watch("username")}
         placeholder="아이디(닉네임)"
         placeholderTextColor="grey"
         autoCapitalize="none"
@@ -67,6 +73,7 @@ export default function Login({ navigation }) {
         onChangeText={(text) => setValue("username", text)}
       />
       <TextInput
+        value={watch("password")}
         ref={passwordRef}
         placeholder="비밀번호"
         placeholderTextColor="grey"
