@@ -9,12 +9,15 @@ import LoggedOutNav from "./src/navigators/LoggedOutNav";
 import { NavigationContainer } from "@react-navigation/native";
 import { ThemeProvider } from "styled-components";
 import { Appearance } from "react-native";
-import { ApolloProvider } from "@apollo/client";
-import client from "./apollo";
+import { ApolloProvider, useReactiveVar } from "@apollo/client";
+import client, { isLoggedInVar } from "./apollo";
+import LoggedInNav from "./src/navigators/LoggedInNav";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
   const onFinish = () => setLoading(false);
+  const isLoggedIn = useReactiveVar(isLoggedInVar);
+
   const preload = () => {
     const fontToLoad = [Ionicons.font];
     const fontPromises = fontToLoad.map((font) => Font.loadAsync(font));
@@ -35,11 +38,10 @@ export default function App() {
   const subscription = Appearance.addChangeListener(({ colorScheme }) => {
     console.log(colorScheme);
   });
-
   return (
     <ApolloProvider client={client}>
       <NavigationContainer>
-        <LoggedOutNav />
+        {isLoggedIn ? <LoggedInNav /> : <LoggedOutNav />}
       </NavigationContainer>
     </ApolloProvider>
   );
