@@ -12,8 +12,13 @@
 - [] 기존 코드 재작성 및 재구현
 - [] react hook form 도입
 - [] 임시 로그인 화면
-- [] localstorage, cookies
+- [] asyncstorage
 - [] backend 연결
 - [] Apollo Client
 - [] 파일 구조 개선
 - [] 기능별 주석 추가
+
+# Q&A
+
+Q: 앱 배경이 왜 검은색?  
+A: 밤에 작업하니까 눈 아파서... 이건 나중에 다크모드 기능 추가로 개선할 예정
