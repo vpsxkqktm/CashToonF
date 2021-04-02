@@ -6,7 +6,7 @@ import { gql, useMutation } from "@apollo/client";
 import AuthButton from "../components/auth/AuthButton";
 import AuthLayout from "../components/auth/AuthLayout";
 import { TextInput } from "../components/auth/AuthShared";
-import { isLoggedInVar } from "../../apollo";
+import { userLogin } from "../../apollo";
 
 const LOG_IN_MUTATION = gql`
   mutation login($username: String!, $password: String!) {
@@ -26,12 +26,12 @@ export default function Login({ route: { params } }) {
     },
   });
   const passwordRef = useRef();
-  const onCompleted = (data) => {
+  const onCompleted = async (data) => {
     const {
       login: { ok, token },
     } = data;
     if (ok) {
-      isLoggedInVar(true);
+      await userLogin(token);
     }
   };
   const [logInMutation, { loading }] = useMutation(LOG_IN_MUTATION, {
