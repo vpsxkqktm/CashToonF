@@ -6,10 +6,10 @@
 
 - [✅] 앱 로딩
 - [✅] 로고, 폰트 이미지 preload
-- [] 네비게이션 구조 개선
-- [] global styles
+- [✅] 네비게이션 구조 개선
+- [🔺] global styles
 - [] dark mode
-- [] 기존 코드 재작성 및 재구현
+- [👨‍💻] 기존 코드 재작성 및 재구현
 - [✅] react hook form 도입
 - [✅] 임시 로그인 화면
 - [✅] asyncstorage
@@ -22,7 +22,7 @@
 
 1. 이제 더이상 `로그인 < - > 홈` 화면 전환을 context를 통한 다중 상속으로 처리하지 않습니다. apollo 클라이언트를 통해 변수를 global로 처리하여 어디서든지 로그인 여부를 체크할 수 있습니다!
 
-2.
+2. 이제 모든 스크린에서 다른 스크린을 불러올 수 있습니다! tab, stack 네비게이션이 완벽하게 결합되었습니다!!
 
 # Q&A
 
@@ -39,7 +39,7 @@ Q: 백엔드 코드 언제 이해하고 로그인 합니까 홈으로 그냥 보
 
 <ApolloProvider client={client}>
   <NavigationContainer>
-    {isLoggedIn ? <LoggedInNav /> : <LoggedOutNav />}
+    {isLoggedIn ? <LoggedInNav /> : <LoggedOutNav />} {/* 이 부분 */}
   </NavigationContainer>
 </ApolloProvider>
 ```
@@ -57,5 +57,5 @@ export const isLoggedInVar = makeVar(false); // 기본값이 false. 즉, 초기 
 Q: 소셜 로그인 ㅇㄷ?  
 A: 소셜 로그인 도입하려면 카카오/네이버에 앱 등록하고 oauth 2.0 인증 받고.. 복잡한 절차가 존재하기 때문에 임시적으로 자체 로그인 기능으로 로그인 < - > 홈 화면을 이동할 수 있도록 함
 
-Q: 기존에 작업해놨던 스택 일부가 사라졌습니다
+Q: 기존에 작업해놨던 스택 일부가 사라졌습니다  
 A: 기능 없이 빈 페이지로 존재하던 것들은 일단 옮기지 않았습니다
