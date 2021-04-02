@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Text, View } from "react-native";
@@ -9,15 +9,24 @@ import AuthLayout from "../components/auth/AuthLayout";
 import { TextInput } from "../components/auth/AuthShared";
 
 export default function Login({ navigation }) {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, setValue } = useForm();
   const passwordRef = useRef();
 
   const onNext = (event) => {
     event?.current?.focus();
   };
-  const onDone = () => {
-    alert("done");
+  const onValid = (data) => {
+    console.log(data);
   };
+
+  useEffect(() => {
+    register("username", {
+      required: true,
+    });
+    register("password", {
+      required: true,
+    });
+  }, [register]);
 
   return (
     <AuthLayout>
@@ -29,6 +38,7 @@ export default function Login({ navigation }) {
         autoFocus={true}
         returnKeyType="next"
         onSubmitEditing={() => onNext(passwordRef)}
+        onChangeText={(text) => setValue("username", text)}
       />
       <TextInput
         ref={passwordRef}
@@ -36,12 +46,13 @@ export default function Login({ navigation }) {
         placeholderTextColor="grey"
         secureTextEntry={true}
         returnKeyType="done"
-        onSubmitEditing={onDone}
+        onSubmitEditing={handleSubmit(onValid)}
+        onChangeText={(text) => setValue("password", text)}
       />
       <AuthButton
         text="로그인"
         disabled={true}
-        onPress={() => handleSubmit(onValid)}
+        onPress={handleSubmit(onValid)}
       />
     </AuthLayout>
   );
