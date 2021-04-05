@@ -1,5 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
+import Community from "../screens/Community";
 
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
@@ -13,7 +14,7 @@ const Stack = createStackNavigator();
 // Stack Nav와 Tab Nav를 결합합니다
 // 여기에 스크린 Stack을 쌓으세요
 
-export default function StackNavFactory({ screenName }) {
+export default function SharedStackNav({ screenName }) {
   return (
     <Stack.Navigator screenOptions={{ headerBackTitleVisible: false }}>
       {screenName === "Home" ? (
@@ -30,6 +31,7 @@ export default function StackNavFactory({ screenName }) {
       ) : null}
       <Stack.Screen name="Reward" component={Reward} />
       <Stack.Screen name="Webtoon" component={Webtoon} />
+      <Stack.Screen name="Community" component={Community} />
     </Stack.Navigator>
   );
 }

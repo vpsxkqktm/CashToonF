@@ -6,7 +6,7 @@ import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import Shopping from "../screens/Shopping";
 import Settings from "../screens/Settings";
-import StackNavFactory from "./StackNavFactory";
+import SharedStackNav from "./SharedStackNav";
 
 const Tabs = createBottomTabNavigator();
 
@@ -35,7 +35,7 @@ export default function LoggedInNav() {
           ),
         }}
       >
-        {() => <StackNavFactory screenName="Home" />}
+        {() => <SharedStackNav screenName="Home" />}
       </Tabs.Screen>
       <Tabs.Screen
         name="Profile"
@@ -49,7 +49,7 @@ export default function LoggedInNav() {
           ),
         }}
       >
-        {() => <StackNavFactory screenName="Profile" />}
+        {() => <SharedStackNav screenName="Profile" />}
       </Tabs.Screen>
       <Tabs.Screen
         name="Shopping"
@@ -63,7 +63,7 @@ export default function LoggedInNav() {
           ),
         }}
       >
-        {() => <StackNavFactory screenName="Shopping" />}
+        {() => <SharedStackNav screenName="Shopping" />}
       </Tabs.Screen>
       <Tabs.Screen
         name="Settings"
@@ -77,7 +77,7 @@ export default function LoggedInNav() {
           ),
         }}
       >
-        {() => <StackNavFactory screenName="Settings" />}
+        {() => <SharedStackNav screenName="Settings" />}
       </Tabs.Screen>
     </Tabs.Navigator>
   );
