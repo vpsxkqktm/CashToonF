@@ -63,7 +63,7 @@ const MenuText = styled.Text`
   text-align: center;
 `;
 
-const backAction = () => {
+export const backAction = () => {
   Alert.alert("종료하기", "정말 종료하시겠습니까?", [
     { text: "네", onPress: () => BackHandler.exitApp() },
     {
@@ -129,7 +129,11 @@ const Home = ({ navigation, point }) => {
             <MenuText>가로세로</MenuText>
           </MenuButton>
 
-          <MenuButton onPress={() => navigation.navigate("Fortune")}>
+          <MenuButton
+            onPress={() => {
+              navigation.navigate("Fortune");
+            }}
+          >
             <MenuText>포츈쿠기</MenuText>
           </MenuButton>
 
