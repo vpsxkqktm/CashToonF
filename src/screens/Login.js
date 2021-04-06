@@ -8,7 +8,7 @@ import AuthLayout from "../components/auth/AuthLayout";
 import { TextInput } from "../components/auth/AuthShared";
 import { userLogin } from "../../apollo";
 
-const LOG_IN_MUTATION = gql`
+const LOGIN_MUTATION = gql`
   mutation login($username: String!, $password: String!) {
     login(username: $username, password: $password) {
       ok
@@ -34,7 +34,7 @@ export default function Login({ route: { params } }) {
       await userLogin(token);
     }
   };
-  const [logInMutation, { loading }] = useMutation(LOG_IN_MUTATION, {
+  const [logInMutation, { loading, error }] = useMutation(LOGIN_MUTATION, {
     onCompleted,
   });
   const onNext = (event) => {

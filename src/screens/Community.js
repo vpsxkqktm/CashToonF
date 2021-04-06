@@ -23,11 +23,20 @@ export default function Community({ navigation }) {
       offset: 0,
     },
   });
-  console.log(data);
-  console.log(error);
+  const renderPost = ({ item: post }) => {
+    return (
+      <View style={{ flex: 1 }}>
+        <Text>{post.title}</Text>
+      </View>
+    );
+  };
   return (
     <View style={{ flex: 1 }}>
-      <Text>1234</Text>
+      <FlatList
+        data={data?.seePostboard}
+        keyExtractor={(post) => post.id}
+        renderItem={renderPost}
+      />
     </View>
   );
 }

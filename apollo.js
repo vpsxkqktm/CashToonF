@@ -7,10 +7,10 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { setContext } from "@apollo/client/link/context";
 
-const TOKEN = "token";
-
 export const isLoggedInVar = makeVar(false);
 export const tokenVar = makeVar("");
+
+const TOKEN = "TOKEN";
 
 export const userLogin = async (token) => {
   await AsyncStorage.setItem(TOKEN, token);
