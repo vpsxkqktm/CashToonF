@@ -5,6 +5,7 @@ import Community from "../screens/Community";
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import Reward from "../screens/Reward";
+import SeePost from "../screens/SeePost";
 import Settings from "../screens/Settings";
 import Shopping from "../screens/Shopping";
 import Webtoon from "../screens/Webtoon";
@@ -32,6 +33,7 @@ export default function SharedStackNav({ screenName }) {
       <Stack.Screen name="Reward" component={Reward} />
       <Stack.Screen name="Webtoon" component={Webtoon} />
       <Stack.Screen name="Community" component={Community} />
+      <Stack.Screen name="SeePost" component={SeePost} />
     </Stack.Navigator>
   );
 }
