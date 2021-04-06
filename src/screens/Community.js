@@ -42,6 +42,7 @@ export default function Community({ navigation }) {
       offset: 0,
     },
   });
+  console.log(loading);
   const renderPost = ({ item: post }) => {
     return <Post {...post} />;
   };
@@ -56,10 +57,10 @@ export default function Community({ navigation }) {
       <FlatList
         refreshing={refreshing}
         onRefresh={refresh}
-        style={{ width: "100%" }}
         showsHorizontalScrollIndicator={false}
+        style={{ width: "100%" }}
         data={data?.seePostboard}
-        keyExtractor={(post) => post.id}
+        keyExtractor={(post) => "" + post.id}
         renderItem={renderPost}
       />
     </ScreenLayout>

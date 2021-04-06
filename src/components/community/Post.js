@@ -12,18 +12,22 @@ const ListContainer = styled.View`
 const PostButton = styled.TouchableOpacity``;
 const PostTitle = styled.Text`
   margin-right: 50px;
+  font-size: 20px;
 `;
 const Username = styled.Text`
   margin-right: 50px;
+  font-size: 20px;
 `;
 const ViewCounts = styled.Text`
   margin-right: 50px;
+  font-size: 20px;
 `;
 const Likes = styled.Text`
   margin-right: 50px;
+  font-size: 20px;
 `;
 
-export default function Post({ id, author, title, file, views, likes }) {
+export default function Post({ id, author, title, views, likes }) {
   const navigation = useNavigation();
   return (
     <Container>
