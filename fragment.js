@@ -4,7 +4,6 @@ export const POST_FRAGMENT = gql`
   fragment PostFragment on Post {
     id
     title
-    file
     likes
     views
   }
