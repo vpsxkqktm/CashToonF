@@ -32,7 +32,13 @@ export default function Post({ id, author, title, views, likes }) {
   return (
     <Container>
       <ListContainer>
-        <PostButton onPress={() => navigation.navigate("SeePost")}>
+        <PostButton
+          onPress={() =>
+            navigation.navigate("SeePost", {
+              postId: id,
+            })
+          }
+        >
           <PostTitle>{title}</PostTitle>
         </PostButton>
         <Username>{author.username}</Username>

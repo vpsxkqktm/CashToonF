@@ -37,12 +37,15 @@ const Index = styled.Text`
 `;
 
 export default function Community({ navigation }) {
-  const { data, loading, error, refetch } = useQuery(POST_BOARD_QUERY, {
-    variables: {
-      offset: 0,
-    },
-  });
-  console.log(loading);
+  const { data, loading, error, refetch, fetchMore } = useQuery(
+    POST_BOARD_QUERY,
+    {
+      variables: {
+        offset: 0,
+      },
+    }
+  );
+  console.log(data);
   const renderPost = ({ item: post }) => {
     return <Post {...post} />;
   };
@@ -55,6 +58,14 @@ export default function Community({ navigation }) {
   return (
     <ScreenLayout loading={loading}>
       <FlatList
+        onEndReached={() =>
+          fetchMore({
+            variables: {
+              offset: data?.seePostboard?.length,
+            },
+          })
+        }
+        onEndReachedThreshold={0}
         refreshing={refreshing}
         onRefresh={refresh}
         showsHorizontalScrollIndicator={false}
