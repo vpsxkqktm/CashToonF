@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { View, Text, Alert, BackHandler } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Checkbox } from "react-native-paper";
 import styled from "styled-components";
 
 import { userLogout } from "../../apollo";
@@ -52,11 +53,14 @@ export default function Home({ navigation }) {
           <MenuButton>
             <MenuText>리워드</MenuText>
           </MenuButton>
-          <MenuButton>
+          <MenuButton onPress={() => navigation.navigate("Webtoon")}>
             <MenuText>웹툰</MenuText>
           </MenuButton>
           <MenuButton onPress={() => navigation.navigate("Community")}>
             <MenuText>커뮤니티</MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => navigation.navigate("FortuneCookie")}>
+            <MenuText>포츈쿠키</MenuText>
           </MenuButton>
           <MenuButton>
             <MenuText>복권</MenuText>

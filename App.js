@@ -47,6 +47,7 @@ export default function App() {
   const subscription = Appearance.addChangeListener(({ colorScheme }) => {
     console.log(colorScheme);
   });
+
   return (
     <ApolloProvider client={client}>
       <NavigationContainer>

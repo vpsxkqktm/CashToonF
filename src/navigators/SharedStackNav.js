@@ -6,9 +6,11 @@ import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import Reward from "../screens/Reward";
 import SeePost from "../screens/SeePost";
+import SeeWebtoon from "../screens/SeeWebtoon";
 import Settings from "../screens/Settings";
 import Shopping from "../screens/Shopping";
 import Webtoon from "../screens/Webtoon";
+import FortuneCookie from "../screens/FortuneCookie";
 
 const Stack = createStackNavigator();
 
@@ -32,8 +34,10 @@ export default function SharedStackNav({ screenName }) {
       ) : null}
       <Stack.Screen name="Reward" component={Reward} />
       <Stack.Screen name="Webtoon" component={Webtoon} />
+      <Stack.Screen name="SeeWebtoon" component={SeeWebtoon} />
       <Stack.Screen name="Community" component={Community} />
       <Stack.Screen name="SeePost" component={SeePost} />
+      <Stack.Screen name="FortuneCookie" component={FortuneCookie} />
     </Stack.Navigator>
   );
 }
