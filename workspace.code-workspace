@@ -1,10 +1,13 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"git.ignoreLimitWarning": true
-	}
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "../postgreSQL"
+    }
+  ],
+  "settings": {
+    "git.ignoreLimitWarning": true
+  }
 }

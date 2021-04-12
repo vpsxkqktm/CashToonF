@@ -6,37 +6,40 @@ import {
   Image,
   useWindowDimensions,
   ActivityIndicator,
+  FlatList,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import styled from "styled-components";
+import WebtoonView from "../components/webtoon/WebtoonView";
 import phoneEnv from "../shared/phoneEnv";
 import ScreenLayout from "../shared/ScreenLayout";
 
 const SEE_WEBTOON_QUERY = gql`
   query seeWebtoon($id: Int!) {
     seeWebtoon(id: $id) {
+      id
       files
     }
   }
 `;
 
-const getUri = (route) => {
-  const { data, loading } = useQuery(SEE_WEBTOON_QUERY, {
-    variables: {
-      id: route?.params?.webtoonId,
-    },
-  });
-  const uri = data?.seeWebtoon?.files;
+// const getUri = (route) => {
+//   const { data, loading } = useQuery(SEE_WEBTOON_QUERY, {
+//     variables: {
+//       id: route?.params?.webtoonId,
+//     },
+//   });
+//   const uri = data?.seeWebtoon?.files;
 
-  let setImageHeight = [];
-  for (var key in uri) {
-    Image.getSize(uri[key], (width, height) => {
-      setImageHeight.push(height);
-      // console.log(setImageHeight);
-    });
-  }
-  console.log(setImageHeight);
-};
+//   let setImageHeight = [];
+//   for (var key in uri) {
+//     Image.getSize(uri[key], (width, height) => {
+//       setImageHeight.push(height);
+//       // console.log(setImageHeight);
+//     });
+//   }
+//   console.log(setImageHeight);
+// };
 
 export default function SeeWebtoon({ route }) {
   // const { width, height } = useWindowDimensions();
@@ -44,33 +47,29 @@ export default function SeeWebtoon({ route }) {
   const { data, loading } = useQuery(SEE_WEBTOON_QUERY, {
     variables: {
       id: route?.params?.webtoonId,
+      offset: 0,
     },
   });
 
-  const uri = data?.seeWebtoon?.files;
-  getUri(route);
+  const renderWebtoon = ({ item: webtoon, index }) => {
+    // console.log(webtoon);
+    return (
+      <Image
+        source={{ uri: webtoon }}
+        resizeMode="contain"
+        style={{ width: "100%", height: 100 }}
+        key={webtoon.id}
+      />
+      // <WebtoonView {...webtoon} />
+    );
+  };
 
   return (
-    <ScreenLayout loading={loading}>
-      <ScrollView style={{ flex: 1 }}>
-        {uri ? (
-          uri.map((item, index) => (
-            <Image
-              source={{ uri: item }}
-              resizeMode="contain"
-              style={{
-                flex: 1,
-                width: "100%",
-                height: 3000,
-              }}
-              key={item}
-            />
-          ))
-        ) : (
-          <ActivityIndicator />
-        )}
-        {/* {console.log(uri)} */}
-      </ScrollView>
-    </ScreenLayout>
+    <FlatList
+      data={data?.seeWebtoon.files}
+      keyExtractor={(webtoon) => "" + webtoon.id}
+      renderItem={renderWebtoon}
+      style={{ width: "100%" }}
+    />
   );
 }

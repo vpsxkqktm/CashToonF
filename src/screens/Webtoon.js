@@ -12,6 +12,9 @@ import phoneEnv from "../shared/phoneEnv";
 import Swiper from "react-native-web-swiper";
 import { Checkbox } from "react-native-paper";
 import { gql, useQuery } from "@apollo/client";
+import { FlatList } from "react-native-gesture-handler";
+import WebtoonList from "../components/webtoon/WebtoonList";
+import ScreenLayout from "../shared/ScreenLayout";
 
 const WebtoonContainer = styled.SafeAreaView`
   flex: 1;
@@ -20,7 +23,7 @@ const WebtoonView = styled.ScrollView`
   background-color: orange;
 `;
 
-const WebtoonList = styled.View`
+const WebtoonListView = styled.View`
   flex-direction: row;
 `;
 
@@ -95,6 +98,10 @@ export default function Webtoon({ navigation }) {
   const { data, loading } = useQuery(WEBTOON_QUERY);
   console.log(data);
 
+  const renderWebtoonList = ({ item: webtoon }) => {
+    return <WebtoonList {...webtoon} />;
+  };
+
   return (
     // 검색창은 개선해서 옮겨두겠습니다.
     // 아직 검색 관련 백엔드 처리가 하나도 없어서 일단 빼둘게요
@@ -137,49 +144,20 @@ export default function Webtoon({ navigation }) {
           </CheckContainer>
         </ModalView>
       </Modal>
-      <WebtoonView>
-        <WebtoonList>
-          <TouchableOpacity
-            style={{ marginRight: 10 }}
-            onPress={() =>
-              navigation.navigate("SeeWebtoon", {
-                webtoonId: 8,
-              })
-            }
-          >
-            <Image
-              resizeMode="center"
-              source={require("../../assets/testimage1.png")}
-              style={{ width: 100, height: 100 }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{ marginRight: 10 }}
-            onPress={() =>
-              navigation.navigate("SeeWebtoon", {
-                webtoonId: 9,
-              })
-            }
-          >
-            <Image
-              resizeMode="center"
-              source={require("../../assets/testimage1.png")}
-              style={{ width: 100, height: 100 }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity style={{ marginRight: 10 }}>
-            <Image
-              resizeMode="center"
-              source={require("../../assets/testimage1.png")}
-              style={{ width: 100, height: 100 }}
-            />
-          </TouchableOpacity>
-        </WebtoonList>
+      <ScreenLayout loading={loading}>
+        <FlatList
+          data={data?.seeWebtoonList}
+          keyExtractor={(webtoon) => "" + webtoon.id}
+          renderItem={renderWebtoonList}
+          style={{ width: "100%" }}
+        />
+      </ScreenLayout>
+      <View>
         <Text>1번 그림을 누르면 짧은 Webtoon 상세보기 페이지</Text>
         <Text>2번 그림을 누르면 아주 긴 장편 Webtoon 테스트 페이지</Text>
         <Text>모든 웹툰 이미지는 서버+DB에서 관리하기 때문에</Text>
         <Text>이미지가 있는 제 개발용 서버에서만 작동함</Text>
-      </WebtoonView>
+      </View>
     </WebtoonContainer>
   );
 }
