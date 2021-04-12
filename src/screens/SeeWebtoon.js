@@ -20,16 +20,26 @@ const SEE_WEBTOON_QUERY = gql`
   }
 `;
 
-export default function SeeWebtoon({ route }) {
-  const { width, height } = useWindowDimensions();
+const getUri = (route) => {
+  const { data, loading } = useQuery(SEE_WEBTOON_QUERY, {
+    variables: {
+      id: route?.params?.webtoonId,
+    },
+  });
+  const uri = data?.seeWebtoon?.files;
 
   let setImageHeight = [];
-  //   for (var key in uri) {
-  //     Image.getSize(data?.seeWebtoon.files[key], (width, height) => {
-  //       setImageHeight.push(height);
-  //     });
-  //   }
-  //   console.log(setImageHeight);
+  for (var key in uri) {
+    Image.getSize(uri[key], (width, height) => {
+      setImageHeight.push(height);
+      // console.log(setImageHeight);
+    });
+  }
+  console.log(setImageHeight);
+};
+
+export default function SeeWebtoon({ route }) {
+  // const { width, height } = useWindowDimensions();
 
   const { data, loading } = useQuery(SEE_WEBTOON_QUERY, {
     variables: {
@@ -38,6 +48,7 @@ export default function SeeWebtoon({ route }) {
   });
 
   const uri = data?.seeWebtoon?.files;
+  getUri(route);
 
   return (
     <ScreenLayout loading={loading}>
@@ -46,9 +57,13 @@ export default function SeeWebtoon({ route }) {
           uri.map((item, index) => (
             <Image
               source={{ uri: item }}
-              style={{ width, height }}
               resizeMode="contain"
-              key={index}
+              style={{
+                flex: 1,
+                width: "100%",
+                height: 3000,
+              }}
+              key={item}
             />
           ))
         ) : (
