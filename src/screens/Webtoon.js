@@ -96,7 +96,7 @@ export default function Webtoon({ navigation }) {
   };
 
   const { data, loading } = useQuery(WEBTOON_QUERY);
-  console.log(data);
+  // console.log(data);
 
   const renderWebtoonList = ({ item: webtoon }) => {
     return <WebtoonList {...webtoon} />;
