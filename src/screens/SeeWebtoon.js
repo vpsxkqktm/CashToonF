@@ -40,59 +40,53 @@ export default function SeeWebtoon({ route }) {
   const [prevData, setData] = useState([]);
   const [imageHeight, setImageHeight] = useState(700);
 
-  const getData = () => {
-    if (loading) {
-      <ActivityIndicator />;
-    } else {
-      setData(
-        prevData.concat((data?.seeWebtoon?.files).slice(offset, offset + LIMIT))
-      );
-      setOffset(offset + LIMIT);
-    }
-  };
+  // const getData = () => {
+  //   if (loading) {
+  //     <ActivityIndicator />;
+  //   } else {
+  //     setData(
+  //       prevData.concat((data?.seeWebtoon?.files).slice(offset, offset + LIMIT))
+  //     );
+  //     setOffset(offset + LIMIT);
+  //   }
+  // };
 
-  useEffect(() => {
-    getData();
-  }, [loading]);
+  // useEffect(() => {
+  //   getData();
+  // }, [loading]);
 
-  const fetchMore = () => {
-    getData();
-  };
-
-  // console.log(prevData);
-  // console.log(setData);
-  // console.log(setOffset);
+  // const fetchMore = () => {
+  //   getData();
+  // };
 
   const renderWebtoon = ({ item, index }) => {
     return (
-      <Wrapper>
-        {!loading ? (
-          <Image
-            source={{ uri: item }}
-            resizeMode="contain"
-            style={{
-              width: 300,
-              height: imageHeight,
-            }}
-          />
-        ) : (
-          <ActivityIndicator />
-        )}
-      </Wrapper>
+      // <Wrapper>
+      //   {!loading ? (
+      //     <Image
+      //       source={{ uri: item }}
+      //       resizeMode="contain"
+      //       style={{
+      //         width: 300,
+      //         height: imageHeight,
+      //       }}
+      //     />
+      //   ) : (
+      //     <ActivityIndicator />
+      //   )}
+      // </Wrapper>
+      <WebtoonView files={item} index={index} />
     );
-    // return <WebtoonView files={item} index={index} />;
   };
 
   return (
     <FlatList
-      data={prevData}
+      data={data?.seeWebtoon.files}
       keyExtractor={(item, index) => item + index}
       renderItem={renderWebtoon}
       style={{
         width: "100%",
       }}
-      onEndReached={fetchMore}
-      onEndReachedThreshold={0.2}
     />
   );
 }

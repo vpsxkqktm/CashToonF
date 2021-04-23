@@ -4,22 +4,31 @@ import { View, Text, Image } from "react-native";
 import styled from "styled-components/native";
 
 const Conatiner = styled.View`
-  flex: 1;
+  background-color: green;
 `;
 
-const Wrapper = styled.View`
-  flex-direction: row;
+const WebtoonWrapper = styled.View`
+  background-color: red;
+  margin: 4px;
+  padding: 5px;
 `;
 
-// 버튼이라고 하기 좀 그런데 이름 뭐로 하지...
-const WebtoonButton = styled.TouchableOpacity``;
+const WebtoonThumbnail = styled.TouchableOpacity`
+  background-color: blue;
+`;
+
+const WebtoonTitle = styled.Text`
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+`;
 
 export default function WebtoonList({ id, title }) {
   const navigation = useNavigation();
   return (
     <Conatiner>
-      <Wrapper>
-        <WebtoonButton
+      <WebtoonWrapper>
+        <WebtoonThumbnail
           onPress={() =>
             navigation.navigate("SeeWebtoon", {
               webtoonId: id,
@@ -29,11 +38,11 @@ export default function WebtoonList({ id, title }) {
           <Image
             source={require("../../../assets/testimage1.png")}
             resizeMode="contain"
-            style={{ width: 100, height: 100 }}
+            style={{ width: 120, height: 100 }}
           />
-        </WebtoonButton>
-      </Wrapper>
-      <Text>{title}</Text>
+          <WebtoonTitle>{title}</WebtoonTitle>
+        </WebtoonThumbnail>
+      </WebtoonWrapper>
     </Conatiner>
   );
 }

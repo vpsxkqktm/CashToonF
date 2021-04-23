@@ -5,6 +5,7 @@ import {
   useWindowDimensions,
   TouchableOpacity,
   Image,
+  FlatList,
 } from "react-native";
 import styled from "styled-components";
 import Modal from "react-native-modal";
@@ -12,7 +13,6 @@ import phoneEnv from "../shared/phoneEnv";
 import Swiper from "react-native-web-swiper";
 import { Checkbox } from "react-native-paper";
 import { gql, useQuery } from "@apollo/client";
-import { FlatList } from "react-native-gesture-handler";
 import WebtoonList from "../components/webtoon/WebtoonList";
 import ScreenLayout from "../shared/ScreenLayout";
 
@@ -86,7 +86,6 @@ const WEBTOON_QUERY = gql`
   }
 `;
 
-// TODO: FlatList로 웹툰 리스트 보여주기
 export default function Webtoon({ navigation }) {
   const [isModalVisible, setModalVisible] = useState(true);
   const [checked, setChecked] = useState(false);
@@ -149,15 +148,9 @@ export default function Webtoon({ navigation }) {
           data={data?.seeWebtoonList}
           keyExtractor={(webtoon) => "" + webtoon.id}
           renderItem={renderWebtoonList}
-          style={{ width: "100%" }}
+          numColumns={3}
         />
       </ScreenLayout>
-      <View>
-        <Text>1번 그림을 누르면 짧은 Webtoon 상세보기 페이지</Text>
-        <Text>2번 그림을 누르면 아주 긴 장편 Webtoon 테스트 페이지</Text>
-        <Text>모든 웹툰 이미지는 서버+DB에서 관리하기 때문에</Text>
-        <Text>이미지가 있는 제 개발용 서버에서만 작동함</Text>
-      </View>
     </WebtoonContainer>
   );
 }

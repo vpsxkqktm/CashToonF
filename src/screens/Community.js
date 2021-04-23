@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import { Text, useWindowDimensions, View } from "react-native";
-import {
-  FlatList,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native-gesture-handler";
+import { Text, useWindowDimensions, View, FlatList } from "react-native";
 import { gql, useQuery } from "@apollo/client";
 import Post from "../components/community/Post";
-import styled from "styled-components";
+import styled from "styled-components/native";
 import ScreenLayout from "../shared/ScreenLayout";
 
 const POST_BOARD_QUERY = gql`
@@ -45,19 +40,25 @@ export default function Community({ navigation }) {
       },
     }
   );
-  console.log(data);
+
   const renderPost = ({ item: post }) => {
     return <Post {...post} />;
   };
-  const refresh = async () => {
+
+  const onRefresh = async () => {
     setRefreshing(true);
     await refetch();
     setRefreshing(false);
   };
+
   const [refreshing, setRefreshing] = useState(false);
   return (
     <ScreenLayout loading={loading}>
       <FlatList
+        style={{ width: "100%" }}
+        data={data?.seePostboard}
+        keyExtractor={(post) => "" + post.id}
+        renderItem={renderPost}
         onEndReached={() =>
           fetchMore({
             variables: {
@@ -65,14 +66,7 @@ export default function Community({ navigation }) {
             },
           })
         }
-        onEndReachedThreshold={0}
-        refreshing={refreshing}
-        onRefresh={refresh}
-        showsHorizontalScrollIndicator={false}
-        style={{ width: "100%" }}
-        data={data?.seePostboard}
-        keyExtractor={(post) => "" + post.id}
-        renderItem={renderPost}
+        onEndReachedThreshold={0.2}
       />
     </ScreenLayout>
   );
