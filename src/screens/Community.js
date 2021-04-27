@@ -56,6 +56,11 @@ export default function Community({ navigation }) {
     <ScreenLayout loading={loading}>
       <FlatList
         style={{ width: "100%" }}
+        ItemSeparatorComponent={() => (
+          <View
+            style={{ width: "100%", height: 2, backgroundColor: "black" }}
+          ></View>
+        )}
         data={data?.seePostboard}
         keyExtractor={(post) => "" + post.id}
         renderItem={renderPost}

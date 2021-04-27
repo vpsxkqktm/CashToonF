@@ -6,7 +6,6 @@ import { useNavigation } from "@react-navigation/native";
 const Container = styled.View``;
 
 const ListContainer = styled.View`
-  border: 1px solid;
   flex-direction: row;
 `;
 
